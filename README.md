@@ -1,2 +1,2 @@
 # BGFT-Payload
-static payload to install games with native BGFT from PS4
+static payload to install PKGs with native PS4 BGFT
