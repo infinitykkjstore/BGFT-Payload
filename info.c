@@ -99,16 +99,43 @@ int get_file(int sock, char* out_path, char* name) {
 
 int get_pkg_info(struct bgft_download_param* params)
 {
-    static char url[] = "http://orbisdev.infinitydev.shop/PS4%200/Jogos/bully/UP9000-CUSA03507_00-SLUS212690000001-A0100-V0102.pkg";
-    static char name[] = "Teste Bully";
-    static char id[] = "UP9000-CUSA03507_00-SLUS212690000001";
-    static char icon_path[] = "http://orbisdev.infinitydev.shop/icons/7.png";
+    #ifdef PKG_URL
+    static char url[] = PKG_URL;
+    #else
+    static char url[] = "https://example.com/pkg.pkg";
+    #endif
+
+    #ifdef PKG_NAME
+    static char name[] = PKG_NAME;
+    #else
+    static char name[] = "Package";
+    #endif
+
+    #ifdef PKG_ID
+    static char id[] = PKG_ID;
+    #else
+    static char id[] = "CUSA00000_00-PACKAGE00000";
+    #endif
+
+    #ifdef PKG_ICON
+    static char icon_path[] = PKG_ICON;
+    #else
+    static char icon_path[] = "";
+    #endif
+
+    #ifdef PKG_TYPE
+    static char pkg_type[] = PKG_TYPE;
+    #else
     static char pkg_type[] = "PS4GD";
+    #endif
+
+    #ifdef PKG_SIZE
+    params->package_size = PKG_SIZE;
+    #endif
 
     params->id = id;
     params->content_url = url;
     params->content_name = name;
-    params->package_size = 2593128448; // opcional
     params->icon_path = icon_path;
     params->package_type = pkg_type;
 

@@ -161,36 +161,36 @@ int main()
 		}
 		
 		if (rv == 0x80990086){			
-			sceSysUtilSendSystemNotificationWithText(222, "Infinitykkj Installer: BGFT Error 0x80990086\nEnsure that there are no old downloads in the notification list.");
+			sceSysUtilSendSystemNotificationWithText(222, "[Infinitykkj STORE] -> Erro 0x80990086\nCertifique-se de que não há downloads antigos na lista de notificações.");
 			break;
 		}
 
 		if (rv == 0x80990088) {
-			sceSysUtilSendSystemNotificationWithText(222, "Infinitykkj Installer: Package Already Installed!");
+			sceSysUtilSendSystemNotificationWithText(222, "Infinitykkj STORE: Conteúdo já instalado!");
 			break;
 		}
 
 		if (rv == 0x80990039 || rv == 0x80A30026) {
-			sceSysUtilSendSystemNotificationWithText(222, "Infinitykkj Installer: Insufficient storage space.\nPlease free up space on your hard drive.");
+			sceSysUtilSendSystemNotificationWithText(222, "Infinitykkj STORE: Espaço de armazenamento insuficiente.\nPor favor, libere espaço no seu PS4.");
 			break;
 		}
 		
 		if (rv == 0x80990085) {
-			sceSysUtilSendSystemNotificationWithText(222, "Infinitykkj Installer: Insufficient storage space.\nPlease free up non fragmented space on your hard drive.");
+			sceSysUtilSendSystemNotificationWithText(222, "Infinitykkj STORE: Espaço de armazenamento insuficiente.\nPor favor, libere espaço no seu PS4.");
 			break;
 		}
 
 		char err[0x200] = "\x0";
 		char errCode[0x20] = "\x0";
 		int32ToHex(rv, (char*)&errCode);
-		concat("Infinitykkj Installer: BGFT Error ", errCode, (char*)err);
+		concat("Infinitykkj STORE: Erro ao instalar -> ", errCode, (char*)err);
 
 		sceSysUtilSendSystemNotificationWithText(222, err);
 		//sceBgftFinalize();
 		break;
 	}
 
-	sceSysUtilSendSystemNotificationWithText(222, "Infinitykkj Installer Encerrado!");
+	sceSysUtilSendSystemNotificationWithText(222, "Instalador Encerrado!");
 	//sceBgftFinalize();
 	return 0;
 }
